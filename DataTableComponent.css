@@ -85,7 +85,7 @@ body {
     border: none !important;
     border-bottom: 2px solid #2a2a2a !important;
     padding: 1rem !important;
-    font-size: 0.85rem !important;
+    font-size: 0.73rem !important;
     font-weight: 600 !important;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -100,6 +100,14 @@ body {
 
 .dark-table .p-datatable-thead > tr > th .p-column-title {
     text-align: center !important;
+}
+
+/* Column Width Settings */
+.dark-table .p-datatable-tbody > tr > td,
+.dark-table .p-datatable-thead > tr > th {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
 }
 
 /* Body */
@@ -304,7 +312,7 @@ body {
 
 /* Compact text size for tables in dialogs */
 .dark-dialog .dark-table .p-datatable-thead > tr > th {
-    font-size: 0.85rem !important;
+    font-size: 0.73rem !important;
     padding: 1rem !important;
     height: auto !important;
     min-height: 3rem !important;
@@ -560,7 +568,7 @@ body {
 }
 
 .row-preview-table .p-datatable-thead > tr > th {
-    font-size: 0.85rem !important;
+    font-size: 0.73rem !important;
     padding: 1rem !important;
     background-color: #121212 !important;
     height: auto !important;
@@ -573,7 +581,7 @@ body {
 }
 
 .row-preview-table .p-column-header-content {
-    font-size: 0.85rem !important;
+    font-size: 0.73rem !important;
 }
 
 /* Row Order Input */

@@ -368,10 +368,10 @@ export default function DataTableComponent() {
                     tableStyle={{ minWidth: '50rem' }}
                     className="dark-table"
                 >
-                    <Column field="route" header="Route" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
-                    <Column field="warehouse" header="Warehouse" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
-                    <Column field="shift" header="Shift" headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
-                    <Column header="Action" body={actionBodyTemplate} headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>
+                    <Column field="route" header="Route" headerStyle={{ textAlign: 'center', width: '150px' }} bodyStyle={{ textAlign: 'center' }} style={{ width: '150px' }}></Column>
+                    <Column field="warehouse" header="Warehouse" headerStyle={{ textAlign: 'center', width: '180px' }} bodyStyle={{ textAlign: 'center' }} style={{ width: '180px' }}></Column>
+                    <Column field="shift" header="Shift" headerStyle={{ textAlign: 'center', width: '120px' }} bodyStyle={{ textAlign: 'center' }} style={{ width: '120px' }}></Column>
+                    <Column header="Action" body={actionBodyTemplate} headerStyle={{ textAlign: 'center', width: '150px' }} bodyStyle={{ textAlign: 'center' }} style={{ width: '150px' }}></Column>
                 </DataTable>
             </div>
 
@@ -398,10 +398,21 @@ export default function DataTableComponent() {
                     className="dark-table"
                 >
                     {columns.filter(col => col.visible).map((col) => {
+                        const getColumnWidth = (field) => {
+                            switch(field) {
+                                case 'no': return '80px';
+                                case 'code': return '100px';
+                                case 'location': return '150px';
+                                case 'delivery': return '120px';
+                                case 'action': return '150px';
+                                default: return 'auto';
+                            }
+                        };
+                        const width = getColumnWidth(col.field);
                         if (col.field === 'action') {
-                            return <Column key={col.field} header={col.header} body={deliveryActionBodyTemplate} headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>;
+                            return <Column key={col.field} header={col.header} body={deliveryActionBodyTemplate} headerStyle={{ textAlign: 'center', width }} bodyStyle={{ textAlign: 'center' }} style={{ width }}></Column>;
                         }
-                        return <Column key={col.field} field={col.field} header={col.header} headerStyle={{ textAlign: 'center' }} bodyStyle={{ textAlign: 'center' }}></Column>;
+                        return <Column key={col.field} field={col.field} header={col.header} headerStyle={{ textAlign: 'center', width }} bodyStyle={{ textAlign: 'center' }} style={{ width }}></Column>;
                     })}
                 </DataTable>
             </Dialog>
@@ -491,7 +502,7 @@ export default function DataTableComponent() {
                             if (col.field === 'code') {
                                 style.width = '80px';
                             } else if (col.field === 'location') {
-                                style.width = 'auto';
+                                style.width = '150px';
                             } else if (col.field === 'delivery') {
                                 style.width = '100px';
                             }
